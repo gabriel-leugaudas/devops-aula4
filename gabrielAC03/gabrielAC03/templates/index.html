@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Aluno</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+
+<body>
+  <div class="container">
+    <h1 align="center">Alunos</h1>
+    <a href="/add"><img src="{{ url_for('static', filename='images/add.png')}}" alt="Adicionar"></a>
+    <table class="table .table-bordered">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Logradouro</th>
+                <th>Número</th>
+                <th>CEP</th>
+                <th>Complemento</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for aluno in alunos %}
+            <tr>
+                <td>{{aluno.nome}}</td>
+                <td>{{aluno.email}}</td>
+                <td>{{aluno.rua}}</td>
+                <td>{{aluno.numero}}</td>
+                <td>{{aluno.cep}}</td>
+                <td>{{aluno.complemento}}</td>
+                <td>
+                    <a href="/edit/{{aluno.ra}}">
+                      <img src="{{ url_for('static', filename='images/edit.png')}}" alt="Editar">
+                    </a>
+                    <a href="/delete/{{aluno.ra}}">
+                      <img src="{{ url_for('static', filename='images/delete.png')}}" alt="Deletar">
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js')}}">
+    </script>
+  </div>
+</body>
+
+</html>
